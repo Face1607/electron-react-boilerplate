@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Überblick Electron-React-Boilerplate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Um die Abhängigkeiten zu installieren muss ein ```npm init``` ins Terminal eingegeben werden. Um das Programm zu starten reicht der Befehl ```npm run-script electron:serve```. 
 
-## Available Scripts
+**Wichtig: der electron:build Befehl ist nicht implementiert!!!**
 
-In the project directory, you can run:
+Der Grund ist die vielen Einstellungen die absolute abhängig von der zu erzeugenden App ist. Wenn man die Appikation am Ende ausführen möchte müssen folgende Schritte absolviert werden:
 
-### `npm start`
+1. Die React App muss gebuildet werden. Dies geht im Boilerplate mit ```npm build```.
+2. Dann muss in der /public/main.js die richtige einstiegsdatei gewählt werden aktuell ist es der localhost:3000.
+3. Die electron app muss gebuildet werden. Dies geht am besten am besten mit dem Electron builder.  https://www.electron.build/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Erklärung zum Boilerplate
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Die gesamte App wurde in mehreren Schritten erstellt.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Folgender Befehl wurde gemacht ``` npx create-react-app folder name``` - altenativ kann der Folder name durch ein "." ersetzt werden wenn kein Ordner erzeugt werden soll.
+2. Es wird folgender Befehl eingegeben ```npm i concurrently wait-on cross-env```
+    * concurrently: Dieses Programm ermöglicht es mehrere cmd Befehle hintereinander auszuführen
+    * wait-on: Dieses Programm startet einen Befehl erst dann wenn eine Datei geöffnet oder ein Prot erzeugt wurde - wichtig für die erstellung von localhost:3000
+    * cross-env: Gibt uns die Möglichkeit Parameter zu setzen wie: ```BROWSER=none```
